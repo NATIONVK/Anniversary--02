@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Beautiful 2 Years | Yeasien & Meghla</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Hind Siliguri', sans-serif;
+        }
+
+        body {
+            background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Galaxy Stars Animation Background */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: transparent;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 2s infinite ease-in-out;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* Container & Pages */
+        .container {
+            width: 90%;
+            max-width: 700px;
+            background: rgba(20, 20, 35, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            z-index: 10;
+            text-align: center;
+            position: relative;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        .page.active {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Typography & Styling */
+        h1 {
+            font-size: 2.2rem;
+            color: #ffb6c1;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: #ff9eaa;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #e0e0e0;
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            color: #ff4d6d;
+            font-weight: 600;
+        }
+
+        /* Progress Bar */
+        .progress-indicator {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 0.85rem;
+            color: #aaa;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 3px 10px;
+            border-radius: 10px;
+        }
+
+        /* Buttons */
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 25px;
+        }
+
+        .nav-btn {
+            background: linear-gradient(135deg, #ff4d6d, #c9184a);
+            border: none;
+            color: white;
+            padding: 10px 25px;
+            font-size: 1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
+        }
+
+        .nav-btn:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+        }
+
+        .nav-btn.secondary {
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: none;
+        }
+
+        .nav-btn.secondary:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        /* Facebook Post Button */
+        .fb-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #1877f2;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: 0.3s ease;
+            box-shadow: 0 4px 12px rgba(24, 119, 242, 0.4);
+        }
+
+        .fb-btn:hover {
+            background: #166fe5;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(24, 119, 242, 0.6);
+        }
+
+        /* Special Page Styles */
+        .avatar-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #ff4d6d;
+            margin-bottom: 15px;
+            box-shadow: 0 0 20px rgba(255, 77, 109, 0.5);
+        }
+
+        .grid-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .card-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: left;
+        }
+
+        .card-item i {
+            color: #ff4d6d;
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .card-item h4 {
+            font-size: 1rem;
+            color: #ffb6c1;
+            margin-bottom: 5px;
+        }
+
+        .card-item p {
+            font-size: 0.85rem;
+            margin: 0;
+            color: #ccc;
+        }
+
+        /* Timeline */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            text-align: left;
+            width: 100%;
+            padding-left: 20px;
+            border-left: 2px solid #ff4d6d;
+        }
+
+        .timeline-item {
+            position: relative;
+        }
+
+        .timeline-item span {
+            font-size: 0.95rem;
+            color: #ffb6c1;
+            font-weight: 600;
+        }
+
+        /* Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            width: 100%;
+            max-height: 280px;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+
+        .gallery-grid::-webkit-scrollbar {
+            width: 5px;
+        }
+        .gallery-grid::-webkit-scrollbar-thumb {
+            background: #ff4d6d;
+            border-radius: 10px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.05);
+            border-color: #ff4d6d;
+        }
+
+        /* Fullscreen Modal for Images */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .modal img {
+            max-width: 90%;
+            max-height: 80vh;
+            border-radius: 10px;
+            border: 2px solid #ff4d6d;
+            box-shadow: 0 0 25px rgba(255, 77, 109, 0.6);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 2.5rem;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .modal-close:hover {
+            color: #ff4d6d;
+        }
+
+        /* Promises List */
+        .promises-list {
+            text-align: left;
+            list-style: none;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .promises-list li {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            border-left: 4px solid #ff4d6d;
+        }
+
+        /* Locked Gift */
+        .gift-box {
+            font-size: 4rem;
+            color: #ff4d6d;
+            cursor: pointer;
+            margin: 15px 0;
+            animation: bounce 1.5s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .secret-message {
+            display: none;
+            background: rgba(255, 77, 109, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px dashed #ff4d6d;
+            margin-top: 10px;
+        }
+
+        /* Responsive */
+        @media(max-width: 600px) {
+            .container {
+                width: 95%;
+                padding: 25px 15px;
+                min-height: 520px;
+            }
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.5rem; }
+            p { font-size: 1rem; }
+            .grid-cards { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Starry Background Generator Script container -->
+    <div class="stars" id="starsContainer"></div>
+
+    <!-- Fullscreen Image Modal -->
+    <div class="modal" id="imageModal" onclick="closeModal()">
+        <span class="modal-close">&times;</span>
+        <img id="modalImg" src="" alt="Zoomed Image">
+    </div>
+
+    <div class="container">
+        <!-- Progress Bar Indicator -->
+        <div class="progress-indicator" id="progressIndicator">1 / 14</div>
+
+        <!-- PAGE 1: Welcome -->
+        <div class="page active" id="page-1">
+            <div>
+                <h1>Happy 2nd Anniversary, Meghla ❤️</h1>
+                <p>দুই বছরের ভালোবাসার এই অনুভূতির কাছে পুরো পৃথিবী একদিকে, তুমি আরেকদিকে।<br>
+            
+                চলো আমরা, আমাদের এই ২ বছর টা আবার ফিরে দেখি 😻 next এ ক্লিক করো 😒 🌙</p>
+            </div>
+            <div class="btn-container">
+                <div></div>
+                <button class="nav-btn" onclick="nextPage()">Start Our Story →</button>
+            </div>
+        </div>
+
+        <!-- PAGE 2: How It Started -->
+        <div class="page" id="page-2">
+            <div>
+                <h2>🌸 How It Started</h2>
+                <p>আমাদের শুরুটা ছিল খুব সাধারণ। তুমি আমাকে <span class="highlight">Varsity Admission-এর ব্যাপারে message</span> দিয়েছিলে।</p>
+                <p>তখন হয়তো কেউ ভাবেনি, একটা সাধারণ Messenger conversation একদিন এত সুন্দর একটা সম্পর্কের শুরু হবে। ❤️</p>
+            </div>
+            <div class="btn-container">
+                <button class="nav-btn secondary" onclick="prevPage()">← Back</button>
+                <button class="nav-btn" onclick="nextPage()">Next →</button>
+            </div>
+        </div>
+
+        <!-- PAGE 3: Messenger Chat -->
+        <div class="page" id="page-3">
+            <div>
+                <h2>💬 Messenger থেকে আমাদের গল্প</h2>
+                <p>প্রথম কথা হয়েছিল Messenger-এ  ছোট ছোট message...</p>
+                <p>তারপর ধীরে ধীরে—<br>
+                ✨ একটা notification এর জন্য অপেক্ষা,<br>
+                ✨ একটা reply এর জন্য হাসি,<br>
+                ✨ আর একটা মানুষের জন্য মন খারাপ।</p>
+            </div>
+            <div class="btn-container">
+                <button class="nav-btn secondary" onclick="prevPage()">← Back</button>
+                <button class="nav-btn" onclick="nextPage()">Next →</button>
+            </div>
+        </div>
+
+        <!-- PAGE 4: Late Night Talks -->
+        <div class="page" id="page-4">
+            <div>
+                <h2>🌙 রাতের সেই কথাগুলো</h2>
+                <p>এটা আমাদের সবচেয়ে Special Memory। ❤️</p>
+                <p>রাতের পর রাত, ঘন্টার পর ঘন্টা কথা বলা... কখন যে রাত শেষ হয়ে যেত, বুঝতেই পারতাম না। তোমার গলার স্বর আজও আমার সবচেয়ে প্রিয় ক্লান্তি দূর করার ওষুধ।</p>
+            </div>
+            <div class="btn-container">
+                <button class="nav-btn secondary" onclick="prevPage()">← Back</button>
+                <button class="nav-btn" onclick="nextPage()">Next →</button>
+            </div>
+        </div>
+
+        <!-- PAGE 5: Special Pic -->
+        <div class="page" id="page-5">
+            <div>
+                <img src="im-01" alt="Meghla" class="avatar-img" onerror="this.src='https://via.placeholder.com/180?text=Meghla+Akter'">
+                <h3 style="color: #ffb6c1; margin-bottom: 10px;">Meghla Akter Moon</h3>
+                <p style="font-size: 0.95rem; font-style: italic;">“তুমি শুধু সুন্দর না, তুমি আমার চোখে সবচেয়ে সুন্দর।”</p>
+            </div>
+            <div class="btn-container">
+                <button class="nav-btn secondary" onclick="prevPage()">← Back</button>
+                <button class="nav-btn" onclick="nextPage()">Next →</button>
+            </div>
+        </div>
+
+        <!-- PAGE 6: What I Love About You -->
+        <div class="page" id="page-6">
+            <div>
+                <h2 style="font-size: 1.5rem; margin-bottom: 10px;">What I Love About You</h2>
+                <div class="grid-cards">
+                    <div class="card-item">
+                        <i class="fa-solid fa-eye"></i>
+                        <h4>Your Eyes</h4>
+                        <p>যেখানে আমি হারিয়ে যেতে পারি।</p>
+                    </div>
+                    <div class="card-item">
+                        <i class="fa-solid fa-microphone-lines"></i>
+                        <h4>Your Voice</h4>
+                        <p>যেটা শুনলে সবকিছু শান্ত লাগে।</p>
+                    </div>
+                    <div class="card-item">
+                        <i class="fa-solid fa-face-smile"></i>
+                        <h4>Your Smile</h4>
+                        <p>আমার সবচেয়ে প্রিয় হাসির অংশ।</p>
+                    </div>
+                    <div class="card-item">
+                        <i class="fa-solid fa-heart"></i>
+                        <h4>Everything</h4>
+                        <p>তোমাকে ভালোবাসার কোনো কারণ লাগে না।</p>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-container">
+                <button class="nav-btn secondary" onclick="prevPage()">← Back</button>
+                <button class="nav-btn" onclick="nextPage()">Next →</button>
+            </div>
+        </div>
+
+        <!-- PAGE 7: Two Years Journey Timeline -->
+        <div class="page" id="page-7">
+            <div>
+                <h2>🌌 Two Years Journey</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <span>7 September 2024</span>
+                        <p style="font-size: 0.85rem; margin:0;">Our Beginning ❤️</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span>First Messages</span>
+                        <p style="font-size: 0.85rem; margin:0;">Varsity Admission Chat 💬</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span>Late Night Talks</span>
+                        <p style="font-size: 0.85rem; margin:0;">Hours of endless conversations 🌙</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span>7 September 2026</span>
+                        <p style="font-size: 0.85rem; margin:0;">Completing 2 Years Together 🎉</p>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-container">
+                <button class="nav-btn secondary" onclick="prevPage()">← Back</button>
+                <button class="nav-btn" onclick="nextPage()">Next →</button>
+            </div>
+        </div>
+
+        <!-- PAGE 8: Her Beautiful Moments Gallery (All 10 Pictures Added) -->
+        <div class="page" id="page-8">
+            <div>
+                <h2 style="font-size: 1.4rem; margin-bottom: 8px;">Her Beautiful Moments</h2>
+                <p style="font-size: 0.8rem; color: #aaa; margin-bottom: 10px;">Click any photo to view full size ✨</p>
+                <div class="gallery-grid">
+                    <div class="gallery-item"><img src="im-02" alt="Pic 1" onclick="openModal(this.src)"></div>
+                    <div class="gallery-item"><img src="im-03.jpg" alt="Pic 2" onclick="openModal(this.src)"></div>
+                    <div class="gallery-item"><img src="im-04.jpg" alt="Pic 3" onclick="openModal(this.src)"></div>
+                    <div class="gallery-item"><img src="im-05.jpg" alt="Pic 4" onclick="openModal(this.src)"></div>
+                    <div class="gallery-item"><img src="im-06.jpg" alt="Pic 5" onclick="openModal(this.src)"></div>
+                    <div class="gallery-item"><img src="im-07.jpg" alt="Pic 6" onclick="openModal(this.src)"></div>
+                    <div class="gallery-item"><img src="im-08.jpg" alt="Pic 7" onclick="openModal(this.src)"></div>
+                    <div class="gallery-item"><img src="im-09.jpg" alt="Pic 8" onclick="openModal(this.src)"></div>
+                    <div class="gallery-item"><img src="im-10.jpg" alt="Pic 9" onclick="openModal(this.src)"></div>
+                    <div class="gallery-item"><img src="im-11.jpg" alt="Pic 10" onclick="openModal(this.src)"></div>
+                </div>
+            </div>
+            <div class="btn-container">
+                <button class="nav-btn secondary" onclick="prevPage()">← Back</button>
+                <button class="nav-btn" onclick="nextPage()">Next →</button>
+            </div>
+        </div>
+
+        <!-- PAGE 9: কিছু কথা, শুধু তোমার জন্য -->
+        <div class="page" id="page-9">
+            <div>
+                <h2>💭 কিছু কথা, শুধু তোমার জন্য</h2>
+                <p>জীবনে অনেক মানুষের সাথে পরিচয় হয়, কিন্তু সবাই জীবনের অংশ হয়ে যায় না। কেউ কেউ আসে ক্ষণিকের জন্য, আর কেউ থেকে যায় আজীবন। তুমি আমার জীবনে ঠিক তেমনই একজন মানুষ, যাকে ছাড়া আমার দিনগুলো অসম্পূর্ণ।</p>
+            </div>
+            <div class="btn-container">
+                <button class="nav-btn secondary" onclick="prevPage()">← Back</button>
+                <button class="nav-btn" onclick="nextPage()">Next →</button>
+            </div>
+        </div>
+
+        <!-- PAGE 10: My Feelings -->
+        <div class="page" id="page-10">
+            <div>
+                <h2>💌 My Feelings</h2>
+                <p>আমি জানি না ভবিষ্যৎ আমাদের কোথায় নিয়ে যাবে, কিন্তু আজ পর্যন্ত আমার সবচেয়ে সুন্দর গল্পের নাম—তুমি। মেঘলা, আমার সুখের দিনেও তুমি থাকো, আবার খারাপ সময়েও সবার আগে তোমার কথাই মনে পড়ে।</p>
+            </div>
+            <div class="btn-container">
+                <button class="nav-btn secondary" onclick="prevPage()">← Back</button>
+                <button class="nav-btn" onclick="nextPage()">Next →</button>
+            </div>
+        </div>
+
+        <!-- PAGE 11: My Promises -->
+        <div class="page" id="page-11">
+            <div>
+                <h2 style="font-size: 1.5rem; margin-bottom: 10px;">My Promises to You</h2>
+                <ul class="promises-list">
+                    <li>❤️ তোমায় সবসময় সম্মান করবো।</li>
+                    <li>🌙 তোমার কঠিন সময়ে পাশে থাকার চেষ্টা করবো।</li>
+                    <li>🤍 তোমার মন দিয়ে সব কথা শুনবো।</li>
+                    <li>✨ আমাদের সুন্দর স্মৃতিগুলো আজীবন যত্ন করে রাখবো।</li>
+                    <li>💌 যতদিন বেঁচে আছি, এভাবেই ভালোবেসে যাবো।</li>
+                </ul>
+            </div>
+            <div class="btn-container">
+                <button class="nav-btn secondary" onclick="prevPage()">← Back</button>
+                <button class="nav-btn" onclick="nextPage()">Next →</button>
+            </div>
+        </div>
+
+        <!-- PAGE 12: Hidden Surprise -->
+        <div class="page" id="page-12">
+            <div>
+                <h2>🎁 A Hidden Surprise</h2>
+                <p style="margin-bottom: 5px;">Open Only When You’re Ready ❤️</p>
+                <div class="gift-box" onclick="revealGift()"><i class="fa-solid fa-gift" id="giftIcon"></i></div>
+                <div class="secret-message" id="secretMsg">
+                    <p style="margin: 0; color: #ffb6c1; font-size: 0.95rem;">Surprise! তুমি আমার জীবনের সবচেয়ে দামি উপহার, মেঘলা। 🤍✨</p>
+                </div>
+            </div>
+            <div class="btn-container">
+                <button class="nav-btn secondary" onclick="prevPage()">← Back</button>
+                <button class="nav-btn" onclick="nextPage()">Next →</button>
+            </div>
+        </div>
+
+        <!-- PAGE 13: Special Letter -->
+        <div class="page" id="page-13">
+            <div>
+                <h2>💌 Special Letter</h2>
+                <p style="font-size: 1rem; text-align: left;">প্রিয় মেঘলা,<br>
+                আজ আমাদের ভালোবাসার দুই বছর পূর্ণ হলো। বিগত এই ৭৬১ দিনে তোমার উপস্থিতিতে আমার শূন্য পৃথিবীটা পূর্ণতা পেয়েছে। আমার নিঃশ্বাসে, অনুভূতির প্রতিটি স্পন্দনে আর ভালোবাসার শেষ সীমানায় শুধুই তুমি। আমার সৃষ্টি আর অস্তিত্বের পুরোটাই এখন তোমাকেই ঘিরে। শুভ ২য় অ্যানিভার্সারি, আমার চাঁদের আলো! ❤️</p>
+            </div>
+            <div class="btn-container">
+                <button class="nav-btn secondary" onclick="prevPage()">← Back</button>
+                <button class="nav-btn" onclick="nextPage()">Next →</button>
+            </div>
+        </div>
+
+        <!-- PAGE 14: Final Surprise Letter -->
+        <div class="page" id="page-14">
+            <div>
+                <h2 style="font-size: 1.5rem; color: #ff4d6d;">🌙 Final Special Letter</h2>
+                <p style="font-size: 0.95rem; text-align: left; line-height: 1.7;">
+                    দেখতে দেখতে আমাদের দুই বছর হয়ে গেল। কখনো মনে হয় সময়টা খুব দ্রুত চলে গেছে, আবার কখনো মনে হয় এই দুই বছরের মধ্যে কত কিছু জমে আছে,,রাগ, অভিমান, হাসি, মন খারাপ, অপেক্ষা আর অনেক না বলা কথা।<br><br>
+
+                    তোমার সাথে কাটানো ছোট ছোট মুহূর্তগুলো এখনো আমার মনে আছে। হয়তো সবকিছু ঠিকভাবে মনে নেই, কিন্তু অনুভূতিগুলো রয়ে গেছে। তুমি পাশে না থাকলে সেটা আরও বেশি বুঝতে পারি। তোমাকে অনেক মিস করি,,এই কথাটা যত সহজে বলা যায়, অনুভব করাটা তার চেয়ে অনেক বেশি।<br><br>
+
+                    কখনো কখনো মনে হয়, পৃথিবীটা তার নিজের নিয়মে ঘুরতেছে, মানুষজন যার যার মতো ব্যস্ত,, আর সেই ব্যস্ত পৃথিবীর মাঝখানে আমার মনটা শুধু তোমার কাছে গিয়া থেমে আছে। তুমি হয়তো জানো না, কিন্তু তোমার একটা ছোট্ট কথা অনেক সময় আমার পুরো দিনটা বদলে দিতে পারে।<br><br>
+
+                    দুই বছর পরেও তোমাকে নিয়ে আমার অনুভূতিটা অচেনা হয়ে যায়নি। বরং কিছু অনুভূতি আছে, যেগুলোর কোনো নির্দিষ্ট নাম হয় না,,শুধু মানুষটার কথা মনে পড়লে বুকের ভেতর কেমন একটা নীরবতা তৈরি হয়। তুমি আমার কাছে ঠিক তেমনই একটা অনুভূতি।<br><br>
+
+                    আমাদের মধ্যে ভুল হয়েছে, অভিমান হয়েছে, মন খারাপও হয়েছে। সবকিছু সবসময় সুন্দর ছিল না। কিন্তু হয়তো সম্পর্কের সৌন্দর্য এখানেই,,সবকিছু নিখুঁত না হয়েও কাউকে নিজের জীবনে রেখে দিতে ইচ্ছা করে।<br><br>
+
+                    কখনো যদি সময়কে থামানো যেত, আমি খুব বড় কোনো মুহূর্ত চাইতাম না। তোমার সাথে কাটানো কোনো সাধারণ একটা বিকেলেই থেমে থাকতে চাইতাম। যেখানে কোনো তাড়া নেই, কোনো চিন্তা নেই,,শুধু তুমি আর আমি, আর আমাদের চেনা নীরবতা।
+                </p>
+
+                <p style="font-size: 0.95rem; text-align: left; line-height: 1.7;">
+                    ইতি,<br>
+                    তোমার মানুষ
+                </p>
+
+                <!-- Facebook Post Link Added Here -->
+                <a href="https://www.facebook.com/share/19CQKnj2ht/" target="_blank" class="fb-btn">
+                    <i class="fa-brands fa-facebook"></i> View Special Facebook Post
+                </a>
+            </div>
+
+            <div class="btn-container">
+                <button class="nav-btn secondary" onclick="prevPage()">← Back</button>
+                <button class="nav-btn" onclick="restartJourney()">From Start 🔄</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Generate Starry Galaxy Background
+        const starsContainer = document.getElementById('starsContainer');
+        const starCount = 100;
+        for (let i = 0; i < starCount; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            let size = Math.random() * 2.5;
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            star.style.top = `${Math.random() * 100}%`;
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.animationDuration = `${Math.random() * 3 + 1}s`;
+            star.style.animationDelay = `${Math.random() * 2}s`;
+            starsContainer.appendChild(star);
+        }
+
+        // Page Navigation Logic
+        let currentPage = 1;
+        const totalPages = 14;
+
+        function showPage(pageNo) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(`page-${pageNo}`).classList.add('active');
+            document.getElementById('progressIndicator').innerText = `${pageNo} / ${totalPages}`;
+       }
+
+        function nextPage() {
+            if (currentPage < totalPages) {
+                currentPage++;
+                showPage(currentPage);
+            }
+        }
+
+        function prevPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                showPage(currentPage);
+            }
+        }
+
+        function restartJourney() {
+            currentPage = 1;
+            showPage(currentPage);
+        }
+
+        // Gift Reveal Function
+        function revealGift() {
+            const secretMsg = document.getElementById('secretMsg');
+            const giftIcon = document.getElementById('giftIcon');
+            secretMsg.style.display = 'block';
+            giftIcon.classList.remove('fa-gift');
+            giftIcon.classList.add('fa-box-open');
+        }
+
+        // Image Fullscreen Modal Functions
+        function openModal(imgSrc) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImg');
+            modal.style.display = 'flex';
+            modalImg.src = imgSrc;
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
